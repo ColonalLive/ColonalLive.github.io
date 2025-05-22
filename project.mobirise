@@ -1,7 +1,7 @@
 {
   "settings": {
     "name": "Colonal.Live",
-    "currentPage": "Contact.html",
+    "currentPage": "index.html",
     "theme": {
       "name": "startm5",
       "title": "StartM5",
@@ -78,7 +78,7 @@
     "favicon": false,
     "mbrsiteDomain": "9x2db7qldo",
     "gdpr": false,
-    "publishChangesOnly": true
+    "publishChangesOnly": false
   },
   "pages": {
     "index.html": {
