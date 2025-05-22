@@ -78,7 +78,7 @@
     "favicon": false,
     "mbrsiteDomain": "9x2db7qldo",
     "gdpr": false,
-    "publishChangesOnly": false
+    "publishChangesOnly": true
   },
   "pages": {
     "index.html": {
