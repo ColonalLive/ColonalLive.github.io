@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+    }
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100vh; /* optional: fills vertical screen too */
+    }
+    .section {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 0; /* remove padding so iframe fills edge-to-edge */
+    overflow: hidden;
+   }
+   .section iframe {
+    width: 100%;
+    height: 97%;
+    border: none;
+   }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="section" id="section1">
+		<h1>Kick</h1>
+		<iframe src="https://kick.com/popout/colonal/chat?parent=<parent>"></iframe>
+	</div>
+    <div class="section" id="section2">
+		<h1>YouTube Landscape</h1>
+		<iframe src="https://studio.youtube.com/live_chat?is_popout=1&v=mdwEB2Q1B5Y&embed_domain=colonal.live"></iframe>
+	</div>
+    <div class="section" id="section3">
+		<h1>YouTube Shorts</h1>
+		<iframe src="https://studio.youtube.com/live_chat?is_popout=1&v=woSnC5jt7Os&embed_domain=colonal.live"></iframe>
+	</div>
+    <div class="section" id="section4">
+		<h1>Twitch</h1>
+		<iframe src="https://www.twitch.tv/popout/colonal/chat?popout=colonal.live"></iframe>
+	</div>
+    <div class="section" id="section5">
+		<h1>Tiktok</h1>
+		<iframe src="https://www.tiktok.com/@colonallive/live?enter_from_merge=pc_share&enter_method=pc_share&is_from_webapp=1&sender_device=pc"></iframe>
+	</div>
+  </div>
+</body>
+</html>
