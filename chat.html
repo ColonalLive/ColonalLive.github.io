@@ -22,24 +22,24 @@
       height: 100vh; /* optional: fills vertical screen too */
     }
     .section {
-    flex: 1;
-    border: 1px solid #ccc;
-    padding: 0; /* remove padding so iframe fills edge-to-edge */
-    overflow: hidden;
-   }
-   .section iframe {
-    width: 100%;
-    height: 97%;
-    border: none;
+      flex: 1;
+      border: 1px solid #ccc;
+      padding: 0; /* remove padding so iframe fills edge-to-edge */
+      overflow: hidden;
+    }
+    .section iframe {
+      width: 100%;
+      height: 97%;
+      border: none;
    }
    .section2 {
-    flex: 0 0 6%; /* fixed 10% width */
-  }
-  .section, .section2 {
-  background-color: #420029;
-  border: none; /* removes default border */
-  box-shadow: none; /* in case shadows are causing the effect */
-}
+      flex: 0 0 6%; /* fixed 10% width */
+   }
+   .section, .section2 {
+     background-color: #420029;
+     border: none; /* removes default border */
+     box-shadow: none; /* in case shadows are causing the effect */
+   }
   </style>
 </head>
 <body>
@@ -50,11 +50,11 @@
 	</div>
     <div class="section" id="section2">
 		<h1>YouTube Landscape</h1>
-		<div id="yt-landscape"></div>
+		<div class="section" id="yt-landscape"></div>
 	</div>
     <div class="section" id="section3">
 		<h1>YouTube Shorts</h1>
-		<div id="yt-shorts"></div>
+		<div class="section" id="yt-shorts"></div>
 	</div>
     <div class="section" id="section4">
 		<h1>Twitch</h1>
