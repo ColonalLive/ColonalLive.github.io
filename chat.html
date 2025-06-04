@@ -74,6 +74,14 @@
 		  window.open(url, '_blank', `width=${width},height=${height},top=${top},left=${left},resizable=yes`);
 		}
 		</script>
+	    	<br>
+		<button onclick="hideSection('section5')">Hide This Section</button>
+		<script>
+			function hideSection(id) {
+			const section = document.getElementById(id);
+			section.style.display = 'none';
+			}
+		</script>
 	</div>
   </div>
 </body>
