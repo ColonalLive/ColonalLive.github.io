@@ -53,6 +53,23 @@
    #section1 iframe {
      height: 90%;
    }
+   .mod-tools {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     padding: 5px;
+     height: 7%;
+   }
+   .mod-tools input {
+     flex: 1;
+     padding: 4px;
+     font-size: 1em;
+   }
+   .mod-tools button {
+     padding: 4px 12px;
+     font-size: 1em;
+     cursor: pointer;
+   }
   </style>
 </head>
 <body>
@@ -60,6 +77,11 @@
     <div class="section" id="section1">
 		<h1>Kick</h1>
 		<iframe src="https://kick.com/popout/colonal/chat?parent=<parent>"></iframe>
+	        <div class="mod-tools">
+ 		<input type="text" id="kick-username" placeholder="Kick username to ban" />
+		<button onclick="banKickUser()">Ban</button>
+  		<span id="ban-status"></span>
+		</div>
 	</div>
     <div class="section" id="section2">
 		<h1>YouTube Landscape</h1>
@@ -110,6 +132,37 @@
       .catch(err => {
         console.error("Failed to load live video IDs:", err);
       });
+  </script>
+  <script>
+    async function banKickUser() {
+      const username = document.getElementById('kick-username').value.trim();
+      const status = document.getElementById('ban-status');
+  
+      if (!username) {
+        status.textContent = "Enter a username.";
+        return;
+      }
+  
+      try {
+        const response = await fetch('/api/kick/ban', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username })
+        });
+  
+        if (response.ok) {
+          status.textContent = `User "${username}" has been banned.`;
+          status.style.color = 'green';
+        } else {
+          const error = await response.text();
+          status.textContent = `Error: ${error}`;
+          status.style.color = 'red';
+        }
+      } catch (err) {
+        status.textContent = `Request failed: ${err}`;
+        status.style.color = 'red';
+      }
+    }
   </script>
 </body>
 </html>
