@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+	  background-color: #420029;
+      color: #ECEEEA;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100vh; /* optional: fills vertical screen too */
+    }
+    .section {
+      flex: 1;
+      border: 1px solid #ccc;
+      padding: 0; /* remove padding so iframe fills edge-to-edge */
+      overflow: hidden;
+    }
+    .section iframe {
+      width: 100%;
+      height: 97%;
+      border: none;
+   }
+   .section h1 {
+      width: 100%;
+      height: 3%;
+      border: none;
+   }
+   .section2 {
+      flex: 0 0 6%; /* fixed 10% width */
+   }
+   .section, .section2 {
+     background-color: #420029;
+     border: none; /* removes default border */
+     box-shadow: none; /* in case shadows are causing the effect */
+   }
+   .yt {
+     flex: 1 1 auto;
+     width: 100%;
+     height: 100%;
+   }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="section" id="section1">
+		<h1>Kick</h1>
+		<iframe src="https://kick.com/popout/colonal/chat?parent=<parent>"></iframe>
+	</div>
+    <div class="section" id="section2">
+		<h1>YouTube Landscape</h1>
+		<div class="yt" id="yt-landscape"></div>
+	</div>
+    <div class="section" id="section3">
+		<h1>YouTube Shorts</h1>
+		<div class="yt" id="yt-shorts"></div>
+	</div>
+    <div class="section" id="section4">
+		<h1>Twitch</h1>
+		<iframe src="https://www.twitch.tv/embed/colonal/chat?parent=colonal.live&darkpopout"></iframe>
+	</div>
+    <div class="section section2" id="section5">
+		<h1>Tiktok</h1>
+		<br>
+		<button onclick="openTikTok()">Open TikTok Chat</button>
+		<script>
+		function openTikTok() {
+		  const url = 'https://www.tiktok.com/@colonallive/live';
+		  const width = 1400;
+		  const height = 600;
+		  const left = (window.screen.width - width) / 2;
+		  const top = (window.screen.height - height) / 2;
+		  window.open(url, '_blank', `width=${width},height=${height},top=${top},left=${left},resizable=yes`);
+		}
+		</script>
+	    	<br><br>
+		<button onclick="hideSection('section5')">Hide This Section</button>
+		<script>
+			function hideSection(id) {
+			const section = document.getElementById(id);
+			section.style.display = 'none';
+			}
+		</script>
+	</div>
+  </div>
+  <script>
+    fetch('/live-ids.json')
+      .then(res => res.json())
+      .then(data => {
+        const domain = "colonal.live";
+        document.getElementById("yt-landscape").innerHTML =
+          `<iframe src="https://studio.youtube.com/live_chat?is_popout=1&v=${data.landscape}&embed_domain=${domain}"></iframe>`;
+        document.getElementById("yt-shorts").innerHTML =
+          `<iframe src="https://studio.youtube.com/live_chat?is_popout=1&v=${data.shorts}&embed_domain=${domain}"></iframe>`;
+      })
+      .catch(err => {
+        console.error("Failed to load live video IDs:", err);
+      });
+  </script>
+</body>
+</html>
